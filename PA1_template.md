@@ -122,5 +122,7 @@ median(stepsperday, na.rm = TRUE)
 ## [1] 10766.19
 ```
 
+There is no significant difference for mean and median number of daily steps between the two methods 
 
 ## Are there differences in activity patterns between weekdays and weekends?
+

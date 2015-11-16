@@ -82,5 +82,45 @@ sum(is.na(dataset$steps))
 ```
 
 
+##2. Create a new dataset that is equal to the original dataset but with the missing data filled in with the mean for that 5-minute interval
+
+```r
+for (i in 1:nrow(dataset)){
+    if (is.na(dataset$steps[i])){
+    dataset$steps[i]<-average_activity_pattern[rownames(average_activity_pattern)==dataset$interval[i]]
+  }
+}
+```
+
+##3 Histogram of the total number of steps taken each day
+
+```r
+stepsperday<-tapply(dataset$steps,dataset$date,sum)
+barplot(stepsperday)
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
+
+##Mean and median of the total number of steps taken per day
+
+##Mean
+
+```r
+mean(stepsperday, na.rm = TRUE)
+```
+
+```
+## [1] 10766.19
+```
+##Mean
+
+```r
+median(stepsperday, na.rm = TRUE)
+```
+
+```
+## [1] 10766.19
+```
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
